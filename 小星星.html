@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				float: left;
+				font-size: 35px;
+				text-align: center;
+			}
+			span{
+				font-size: 24px;
+				display: block;
+				color: red;
+				padding-top: 9px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>☆</div>
+		<div>☆</div>
+		<div>☆</div>
+		<div>☆</div>
+		<div>☆</div>
+		<span></span>
+		<script>
+			var divs=document.getElementsByTagName('div');
+			var spans=document.getElementsByTagName('span')[0];
+			var n=0;
+			var onoff=-1;
+			var arr=['极差','一般','不错','推荐','力推'];
+			for(var i=0;i<divs.length;i++){
+				divs[i].index=i
+					divs[i].onmouseover=function(){
+						for(var i=0;i<divs.length;i++){
+							divs[i].style.color='';
+						}
+						n=this.index
+						spans.innerHTML=arr[n];
+						for(var j=0;j<=n;j++){
+							if(n<=1){								
+								divs[j].style.color='yellow';									
+							}else{
+								divs[j].style.color='red';
+							}
+						}							
+					}
+					divs[i].onmouseout=function(){						
+						for(var i=0;i<divs.length;i++){
+							divs[i].style.color='';
+							spans.innerHTML='';
+						}
+						if(onoff>-1){
+							for(var i=0;i<=onoff;i++){
+							if(onoff<=1){								
+								divs[i].style.color='yellow';									
+							}else{
+								divs[i].style.color='red';
+							}
+						}	
+						spans.innerHTML=arr[onoff];
+						}
+					}
+					divs[i].onclick=function(){
+						onoff=n;
+					}
+			}
+			
+		</script>
+	</body>
+</html>
